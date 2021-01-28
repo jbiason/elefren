@@ -4,8 +4,7 @@ use crate::status_builder;
 use chrono::prelude::*;
 use serde::{
     de::{self, Unexpected},
-    Deserialize,
-    Serialize,
+    Deserialize, Serialize,
 };
 use std::path::PathBuf;
 
@@ -23,9 +22,9 @@ pub struct Account {
     /// The account's display name.
     pub display_name: String,
     /// The number of followers for the account.
-    pub followers_count: u64,
+    pub followers_count: i64,
     /// The number of accounts the given account is following.
-    pub following_count: u64,
+    pub following_count: i64,
     /// URL to the header image.
     pub header: String,
     /// URL to the header static image (gif).
@@ -104,7 +103,7 @@ fn string_or_bool<'de, D: de::Deserializer<'de>>(val: D) -> ::std::result::Resul
                     &"true or false",
                 ));
             }
-        },
+        }
     })
 }
 
